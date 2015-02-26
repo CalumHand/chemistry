@@ -1,3 +1,35 @@
+print_out_to_file = False
+file
+
+def outputString(output):
+    if print_out_to_file:
+        if (not file):
+            print "Error! No output file specified!"
+            pass
+        else:
+            if file.open:
+                file.write(output)
+            else:
+                print "Error! Output file not open!"
+    else:
+        print output
+
+valid_input = False
+while not valid_input:
+    inputString = raw_input("Do you want to output to a file? Y/N")
+    if (inputString == "Y"):
+        print_out_to_file = True
+        valid_input = True
+    elif (inputString == "N"):
+        valid_input = True
+    else:
+        print "Please enter Y or N"
+
+if print_out_to_file:
+    inputString = raw_input("Please enter the output filename:")
+
+
+
 database = {}
 for i in range(0,4001):
     database[i] = []
@@ -215,7 +247,7 @@ for i in range(2240,2276):
 
 
 peaks = []
-while 1<4 :
+while True :
     wavenumber = raw_input("Enter a wavenumber, type run to start: ")
     if wavenumber == 'run':
         break
@@ -230,10 +262,11 @@ peaks.reverse()
 
 print "\nInfra Red analysis predicts that"
 
-for peak in peaks:
-    for reference in database:
-        if reference == peak:
-            print "\n",peak, "corresponds to data entry "
-            print reference,"cm^-1 :"
-            print "||","\n|| ".join(database[reference])
-print
+def compiler():
+    for peak in peaks:
+        for reference in database:
+            if reference == peak:
+                print "\n",peak, "corresponds to data entry "
+                print reference,"cm^-1 :"
+                print "||","\n|| ".join(database[reference])
+compiler()
